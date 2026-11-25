@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dwayne Aitken</title>
+  <meta name="description" content="Dwayne Aitken is a software engineer in Jamaica who builds websites, web apps and mobile apps.">
+  <!-- One typeface only: Archivo, with its width axis doing the expressive work. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- The figure is drawn once here and reused by the hero and the ID card. Swap for a real photo later. -->
+  <svg width="0" height="0" class="visually-hidden" aria-hidden="true">
+    <symbol id="standing-figure" viewBox="0 0 200 560">
+      <circle cx="100" cy="40" r="31"/><path d="M84 60h32v30c0 12-32 12-32 0z"/>
+      <path d="M72 92c8 8 48 8 56 0l26 10c14 6 20 16 22 30l14 134c1 10-16 13-19 3l-21-118-4 2 4 130 6 262c0 8-30 10-31 1l-22-238h-6l-22 238c-1 9-31 7-31-1l6-262 4-130-4-2-21 118c-3 10-20 7-19-3l14-134c2-14 8-24 22-30z"/>
+    </symbol>
+  </svg>
+
+  <!-- Top bar: monogram and name on the left, page sections on the right. -->
+  <header class="top-bar">
+    <a class="brand" href="#top"><span class="brand-mark">DA</span><span>Dwayne Aitken</span></a>
+    <nav aria-label="Page sections">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO: ghost surname behind a standing figure who "talks" through captions. -->
+    <section class="hero" aria-label="Introduction">
+      <div class="ghost-name" aria-hidden="true">AITKEN</div>
+
+      <div class="hero-figure">
+        <svg class="figure-art" aria-hidden="true"><use href="#standing-figure"/></svg>
+        <!-- Drop a clip at assets/hero-intro.mp4 and it replaces the drawn figure automatically. -->
+        <video id="hero-video" class="figure-video" src="assets/hero-intro.mp4" muted loop playsinline preload="metadata" hidden></video>
+      </div>
+
+      <p id="hero-caption" class="hero-caption">Hi, I'm Dwayne.</p>
+
+      <button id="intro-toggle" class="intro-toggle" type="button" aria-label="Pause introduction">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path id="intro-toggle-icon" d="M5 3h4v14H5zM11 3h4v14h-4z"/></svg>
+      </button>
+
+      <div class="hero-title">
+        <p class="hero-name">Dwayne Aitken</p>
+        <h1>Software<br>Engineer.</h1>
+        <p class="hero-summary">Websites, web apps and mobile apps, built in Jamaica.</p>
+      </div>
+
+      <div class="hero-actions">
+        <a class="pill pill-solid" href="#work">Explore work</a>
+        <a class="pill" href="#contact">Let's talk</a>
+      </div>
+    </section>
+
+    <!-- ABOUT: the flipping ID card beside a short plain-English introduction. -->
+    <section id="about" class="about">
+      <div class="card-holder">
+        <span class="lanyard" aria-hidden="true"></span>
+        <button id="id-card" class="id-card" type="button" aria-pressed="false" aria-label="Flip ID card">
+          <span class="id-card-inner">
+            <span class="id-face id-front">
+              <span class="id-header"><span>Dwayne Aitken</span><span class="brand-mark">DA</span></span>
+              <span class="id-photo"><svg aria-hidden="true"><use href="#standing-figure"/></svg></span>
+              <span class="id-name">Dwayne<br>Aitken</span>
+              <span class="id-role">Software Engineer</span>
+              <span class="id-place">Greater Portmore, Jamaica</span>
+            </span>
+            <span class="id-face id-back">
+              <span class="id-back-heading">Education</span>
+              <span class="id-line"><b>MSc Information Systems Management</b>UTech, 2025</span>
+              <span class="id-line"><b>BSc Information and Communication Technology</b>VTDI, 2022</span>
+              <span class="id-line"><b>ASc Information and Communication Technology</b>VTDI, 2020</span>
+              <span class="id-back-heading">Certified in</span>
+              <span class="id-line">CCNAv7 SRWE and ENSA, CCNA Security, Fundamentals of CCTV</span>
+            </span>
+          </span>
+        </button>
+        <p class="card-hint">Select the card to flip it</p>
+      </div>
+
+      <div class="about-text">
+        <h2>I build the software people use every day.</h2>
+        <p>I'm a software engineer from Greater Portmore, Jamaica. I work across the whole product: the database, the API, the web front end and the Android app.</p>
+        <p>Through my company, Aitken Technology, I make websites, web apps and mobile apps for businesses. I also hold a master's in Information Systems Management and networking certificates, so I can follow a problem from the screen down to the wire.</p>
+      </div>
+    </section>
+
+    <!-- SKILLS: the periodic table. main.js draws the elements from the SKILLS list. -->
+    <section id="skills" class="skills">
+      <h2>The periodic table of what I use.</h2>
+      <div id="family-legend" class="family-legend" role="group" aria-label="Highlight a skill family"></div>
+      <div id="periodic-table" class="periodic-table">
+        <!-- The panel sits in the gap at the top, where a real periodic table is empty. -->
+        <div id="element-detail" class="element-detail" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- WORK: real projects with real screenshots. Grey at rest, full colour when pointed at. -->
+    <section id="work" class="work">
+      <h2>Selected work</h2>
+
+      <article class="project project-wide">
+        <a class="project-shot" href="https://kopi111.github.io/summer-splash/" target="_blank" rel="noopener">
+          <img src="assets/work/summer-splash.jpg" alt="Summer Splash website home page" width="1440" height="900" loading="lazy">
+        </a>
+        <h3>Summer Splash</h3>
+        <p>Website for a pool services company, with service pages, customer reviews and a free-quote request form.</p>
+        <a class="project-link" href="https://kopi111.github.io/summer-splash/" target="_blank" rel="noopener">Visit the site</a>
+      </article>
+
+      <article class="project project-phone">
+        <div class="project-shot"><img src="assets/work/money-path.jpg" alt="Money Path app showing the money left for the month" loading="lazy"></div>
+        <h3>Money Path</h3>
+        <p>My own Android budgeting app. Savings goals, monthly limits, PIN lock and an encrypted database. Nothing leaves the phone.</p>
+      </article>
+
+      <article class="project">
+        <a class="project-shot" href="https://kopi111.github.io/jelly-water/" target="_blank" rel="noopener">
+          <img src="assets/work/jelly-water.jpg" alt="Jelly Water 3D ordering website" width="1440" height="900" loading="lazy">
+        </a>
+        <h3>Jelly Water</h3>
+        <p>Coconut water label and 3D ordering site, made for a school assignment.</p>
+        <a class="project-link" href="https://kopi111.github.io/jelly-water/" target="_blank" rel="noopener">Visit the site</a>
+      </article>
+
+      <article class="project">
+        <a class="project-shot" href="https://kopi111.github.io/strategy-desk/" target="_blank" rel="noopener">
+          <img src="assets/work/strategy-desk.jpg" alt="Strategy Desk price-action dashboard" width="1440" height="900" loading="lazy">
+        </a>
+        <h3>Strategy Desk</h3>
+        <p>Price-action dashboard with chart markup, alerts and a trades page, written in plain JavaScript.</p>
+        <a class="project-link" href="https://kopi111.github.io/strategy-desk/" target="_blank" rel="noopener">Visit the site</a>
+      </article>
+
+      <article class="project project-wide">
+        <div class="project-shot"><img src="assets/work/aitken-shipping.jpg" alt="Aitken Shipping website home page" loading="lazy"></div>
+        <h3>Aitken Shipping</h3>
+        <p>Demo courier site in ASP.NET Core with instant quotes, parcel tracking and shipment booking.</p>
+      </article>
+    </section>
+
+    <!-- EXPERIENCE: a true sequence, so it reads newest first down a date column. -->
+    <section id="experience" class="experience">
+      <h2>Experience and study</h2>
+      <ol class="timeline">
+        <li><span class="when">Now</span><span class="what">Aitken Technology</span><span class="detail">My company. Websites, web apps and mobile apps.</span></li>
+        <li><span class="when">2025</span><span class="what">MSc Information Systems Management</span><span class="detail">University of Technology, Jamaica</span></li>
+        <li><span class="when">2022 to present</span><span class="what">Software Engineer, JMMB</span><span class="detail">Customer onboarding and self-service systems</span></li>
+        <li><span class="when">2020 to 2022</span><span class="what">BSc Information and Communication Technology</span><span class="detail">VTDI</span></li>
+        <li><span class="when">2018 to 2020</span><span class="what">ASc Information and Communication Technology</span><span class="detail">VTDI, with an award for outstanding academic performance</span></li>
+      </ol>
+    </section>
+
+    <!-- ACHIEVEMENTS: scrolling down the page moves this strip sideways (see main.js). -->
+    <section id="achievements" class="achievements">
+      <div class="achievements-stage">
+        <h2>Achievements</h2>
+        <ul id="achievements-track" class="achievements-track">
+          <li><strong>106</strong><span>projects kept on GitHub</span></li>
+          <li><strong>MSc</strong><span>Information Systems Management, completed 2025</span></li>
+          <li><strong>Outstanding</strong><span>Award for academic performance, VTDI, 2018 to 2020</span></li>
+          <li><strong>CCNA</strong><span>CCNAv7 SRWE, CCNAv7 ENSA and CCNA Security</span></li>
+          <li><strong>3 live</strong><span>public websites you can open right now</span></li>
+          <li><strong>CCTV</strong><span>Fundamentals of CCTV certificate</span></li>
+          <li><strong>Web design</strong><span>Certificate from Vector Technology Institute</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT: one big, obvious way to reach me. -->
+    <section id="contact" class="contact">
+      <h2>Let's talk.</h2>
+      <a class="contact-email" href="mailto:dwayneaitken111@gmail.com">dwayneaitken111@gmail.com</a>
+      <p class="contact-links">
+        <a href="https://github.com/kopi111" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.tiktok.com/@aitkentechnology" target="_blank" rel="noopener">TikTok</a>
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">&copy; 2026 Dwayne Aitken</footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

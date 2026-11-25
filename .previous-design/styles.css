@@ -1,0 +1,454 @@
+/* ---------- Design tokens: pure black and white, two greys, one typeface ---------- */
+:root {
+  --ink: #000;
+  --paper: #fff;
+  --grey-mid: #6b6b6b;
+  --grey-light: #e4e4e4;
+  --gutter: clamp(16px, 4vw, 56px);
+  --section-gap: clamp(80px, 12vw, 180px);
+}
+
+/* ---------- Page basics ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 18px/1.55 "Archivo", system-ui, sans-serif;
+  overflow-x: clip;
+}
+h1, h2, h3, p, ol, ul { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+a { color: inherit; }
+img, video, svg { display: block; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.achievements :focus-visible { outline-color: var(--paper); }
+
+.visually-hidden { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* Section headings share one wide, heavy treatment. */
+section h2 {
+  font-size: clamp(36px, 6.4vw, 92px);
+  font-weight: 800;
+  font-stretch: 112%;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+/* ---------- Top bar ---------- */
+.top-bar {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 14px var(--gutter);
+  background: var(--paper);
+  font-size: 14px;
+}
+.top-bar a { text-decoration: none; }
+.top-bar nav { display: flex; gap: clamp(12px, 2.2vw, 30px); }
+.top-bar nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.brand { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ---------- Hero: ghost surname, figure, caption, title ---------- */
+.hero {
+  position: relative;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+}
+.ghost-name {
+  position: absolute;
+  top: 11svh;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20.4vw;
+  font-weight: 900;
+  font-stretch: 125%;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--grey-light);
+  white-space: nowrap;
+  user-select: none;
+}
+.hero-figure {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: min(25svh, 40vw);
+  height: 84svh;
+  transform: translateX(-50%);
+}
+.figure-art { width: 100%; height: 100%; fill: var(--ink); }
+.figure-video { width: 100%; height: 100%; object-fit: contain; object-position: bottom; mix-blend-mode: multiply; }
+
+.hero-caption {
+  position: absolute;
+  top: 24svh;
+  left: calc(50% + min(14svh, 20vw));
+  max-width: 300px;
+  padding: 12px 18px;
+  border-radius: 18px 18px 18px 4px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 17px;
+  line-height: 1.35;
+}
+/* Each word fades in on its own so the caption reads like speech. */
+.hero-caption span { animation: word-appear 0.22s both; }
+@keyframes word-appear { from { opacity: 0; } }
+
+.intro-toggle {
+  position: absolute;
+  top: 78px;
+  right: var(--gutter);
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--ink);
+  cursor: pointer;
+}
+.intro-toggle svg { width: 16px; height: 16px; fill: var(--paper); }
+
+.hero-title { position: absolute; left: var(--gutter); bottom: clamp(24px, 5svh, 56px); }
+.hero-name { font-size: 16px; font-stretch: 112%; margin-bottom: 8px; }
+.hero h1 {
+  font-size: clamp(50px, 8.4vw, 136px);
+  font-weight: 800;
+  font-stretch: 100%;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+}
+.hero-summary { margin-top: 14px; max-width: 30ch; font-size: 17px; line-height: 1.35; color: var(--grey-mid); }
+
+.hero-actions {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(24px, 5svh, 56px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.pill {
+  padding: 12px 24px;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  background: var(--paper);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+.pill:hover, .pill-solid { background: var(--ink); color: var(--paper); }
+.pill-solid:hover { background: var(--paper); color: var(--ink); }
+
+/* ---------- About and the flipping ID card ---------- */
+.about {
+  display: grid;
+  grid-template-columns: minmax(300px, 400px) minmax(0, 680px);
+  justify-content: center;
+  gap: clamp(40px, 8vw, 130px);
+  align-items: center;
+  padding: 0 var(--gutter) var(--section-gap);
+}
+.card-holder { display: flex; flex-direction: column; align-items: center; }
+.lanyard { width: 18px; height: clamp(60px, 10vw, 130px); background: var(--ink); }
+
+.id-card {
+  width: min(340px, 100%);
+  aspect-ratio: 5 / 8;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  perspective: 1400px;
+}
+.id-card-inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.3, 1.25, 0.5, 1);
+}
+.id-card[aria-pressed="true"] .id-card-inner { transform: rotateY(180deg); }
+.id-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: var(--paper);
+  backface-visibility: hidden;
+}
+.id-header { display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+.id-photo {
+  flex: 1;
+  min-height: 0;
+  margin: 16px 0;
+  padding-top: 16px;
+  background: var(--grey-light);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.id-photo svg { width: 100%; height: 150%; fill: var(--ink); }
+.id-name { font-size: 40px; font-weight: 800; font-stretch: 112%; line-height: 0.98; letter-spacing: -0.03em; }
+.id-role { margin-top: 10px; font-weight: 600; }
+.id-place { font-size: 14px; color: var(--grey-mid); }
+.id-back { transform: rotateY(180deg); background: var(--ink); color: var(--paper); gap: 14px; font-size: 15px; line-height: 1.35; }
+.id-back-heading { font-size: 22px; font-weight: 800; font-stretch: 112%; margin-top: 6px; }
+.id-line b { display: block; font-weight: 600; }
+.card-hint { margin-top: 14px; font-size: 14px; color: var(--grey-mid); }
+
+.about-text h2 { font-size: clamp(34px, 4.8vw, 68px); margin-bottom: 28px; }
+.about-text p { max-width: 58ch; }
+.about-text p + p { margin-top: 16px; }
+
+/* ---------- Periodic table of skills ---------- */
+.skills { padding: 0 var(--gutter) var(--section-gap); }
+.family-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin: 28px 0 24px; }
+.family-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+}
+.family-button[aria-pressed="true"] { font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+.family-swatch { width: 18px; height: 18px; border-radius: 3px; }
+
+.periodic-table {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  gap: 5px;
+}
+.element {
+  position: relative;
+  aspect-ratio: 1;
+  padding: 6px;
+  border: 1.5px solid var(--ink);
+  border-radius: 4px;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.14s, opacity 0.2s;
+}
+.element:hover, .element[aria-pressed="true"] { transform: scale(1.1); z-index: 2; box-shadow: 0 0 0 2px var(--paper), 0 0 0 4px var(--ink); }
+.element.is-dimmed { opacity: 0.16; }
+.element-number { position: absolute; top: 5px; left: 7px; font-size: clamp(9px, 0.8vw, 12px); }
+.element-symbol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  font-size: clamp(20px, 2.9vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.element-name {
+  position: absolute;
+  inset: auto 3px 5px 3px;
+  font-size: clamp(9px, 0.82vw, 12px);
+  font-stretch: 75%;
+  line-height: 1.05;
+  text-align: center;
+}
+
+/* Skill families are told apart by fill pattern, because the page has no colour. */
+.family-languages { background: var(--ink); color: var(--paper); }
+.family-frameworks { background: var(--paper); }
+.family-data { background: var(--grey-light); }
+.family-infrastructure { background: repeating-linear-gradient(135deg, var(--paper) 0 5px, var(--grey-light) 5px 10px); }
+.family-security { background: var(--grey-mid); color: var(--paper); }
+.family-swatch.family-frameworks, .family-swatch.family-infrastructure { border: 1px solid var(--ink); }
+
+.element-detail {
+  grid-column: 3 / 10;
+  grid-row: 1 / 4;
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.4vw, 36px);
+  padding: 0 clamp(10px, 2vw, 32px);
+}
+.detail-symbol {
+  flex: none;
+  font-size: clamp(64px, 11vw, 170px);
+  font-weight: 900;
+  font-stretch: 125%;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+.detail-name { font-size: clamp(20px, 2.2vw, 32px); font-weight: 700; line-height: 1.1; }
+.detail-family { font-size: 14px; color: var(--grey-mid); margin: 4px 0 8px; }
+.detail-use { font-size: clamp(15px, 1.25vw, 18px); line-height: 1.4; max-width: 38ch; }
+
+/* ---------- Work: grey at rest, colour when pointed at ---------- */
+.work {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(48px, 6vw, 90px) clamp(16px, 2.4vw, 36px);
+  padding: 0 var(--gutter) var(--section-gap);
+}
+.work h2 { grid-column: 1 / -1; }
+.project { grid-column: span 6; }
+.project-wide { grid-column: span 8; }
+.project-phone { grid-column: span 4; }
+.project-shot {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--ink);
+  border-radius: 6px;
+  aspect-ratio: 16 / 10;
+}
+.project-phone .project-shot { aspect-ratio: auto; height: calc(100% - 150px); min-height: 320px; background: var(--ink); }
+.project-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.3s;
+}
+.project-phone .project-shot img { object-fit: contain; object-position: center; }
+.project:hover img { filter: none; }
+.project h3 { margin-top: 16px; font-size: clamp(24px, 2.6vw, 38px); font-weight: 800; font-stretch: 112%; letter-spacing: -0.025em; line-height: 1.1; }
+.project p { margin-top: 6px; max-width: 54ch; }
+.project-link { display: inline-block; margin-top: 8px; font-weight: 600; text-underline-offset: 4px; }
+
+/* ---------- Experience timeline ---------- */
+.experience { padding: 0 var(--gutter) var(--section-gap); }
+.timeline { margin-top: clamp(28px, 4vw, 56px); border-top: 2px solid var(--ink); }
+.timeline li {
+  display: grid;
+  grid-template-columns: minmax(130px, 2fr) 5fr 4fr;
+  gap: 8px clamp(16px, 3vw, 40px);
+  align-items: baseline;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--ink);
+}
+.when { color: var(--grey-mid); }
+.what { font-size: clamp(20px, 2vw, 28px); font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; }
+
+/* ---------- Achievements: pinned black stage whose strip moves sideways ---------- */
+.achievements { background: var(--ink); color: var(--paper); }
+.achievements-stage {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(24px, 5svh, 56px);
+  padding-left: var(--gutter);
+  overflow: hidden;
+}
+.achievements-track {
+  display: flex;
+  gap: clamp(40px, 7vw, 110px);
+  width: max-content;
+  padding-right: var(--gutter);
+  will-change: transform;
+}
+/* Each item is as wide as its big word, so the last one can never run off the end. */
+.achievements-track li { flex: none; width: max-content; min-width: clamp(270px, 42vw, 620px); }
+.achievements-track strong {
+  display: block;
+  font-size: clamp(64px, 10.5vw, 170px);
+  font-weight: 900;
+  font-stretch: 112%;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+}
+.achievements-track span { display: block; margin-top: 14px; max-width: 32ch; font-size: clamp(17px, 1.6vw, 22px); line-height: 1.35; }
+
+/* Without the pinned effect the strip is an ordinary sideways scroller. */
+.achievements-stage.is-free { position: static; height: auto; padding-block: var(--section-gap); overflow-x: auto; }
+
+/* ---------- Contact and footer ---------- */
+.contact { padding: var(--section-gap) var(--gutter); }
+.contact h2 { font-size: clamp(64px, 15vw, 250px); line-height: 0.92; font-stretch: 125%; font-weight: 900; }
+.contact-email {
+  display: inline-block;
+  margin-top: 30px;
+  font-size: clamp(19px, 3.4vw, 46px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+  text-underline-offset: 6px;
+}
+.contact-links { display: flex; gap: 22px; margin-top: 18px; }
+.contact-links a { text-underline-offset: 4px; }
+.site-footer { padding: 18px var(--gutter); border-top: 1px solid var(--ink); font-size: 14px; }
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 900px) {
+  .brand span:last-child { display: none; }
+  .top-bar nav { overflow-x: auto; font-size: 12px; gap: 10px; }
+  .about { grid-template-columns: minmax(0, 1fr); }
+  .card-holder { order: 1; }
+  .about-text { order: 0; padding-top: 24px; }
+  .card-holder .id-card { width: min(300px, 86%); }
+
+  /* The table reflows to five columns and the detail panel moves to the top. */
+  .periodic-table { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .periodic-table .element { grid-column: auto !important; grid-row: auto !important; }
+  .element-detail { grid-column: 1 / -1; grid-row: auto; min-height: 150px; padding: 0 0 12px; }
+  .element-symbol { font-size: clamp(22px, 7vw, 40px); }
+  .element-number { font-size: 10px; }
+  .element-name { font-size: 10px; }
+
+  .project, .project-wide, .project-phone { grid-column: 1 / -1; }
+  .project-phone .project-shot { height: 460px; }
+  .timeline li { grid-template-columns: 1fr; }
+}
+
+/* On a phone the figure stands above the title rather than between it and the buttons. */
+@media (max-width: 600px) {
+  /* The name is already in the hero, so the phone top bar keeps only the section links. */
+  .brand { display: none; }
+  .top-bar nav { width: 100%; justify-content: space-between; font-size: 12px; gap: 8px; }
+  .ghost-name { top: 15svh; }
+  .hero-figure { height: 56svh; bottom: 30svh; width: 34vw; left: 66%; }
+  .hero-caption { top: 76px; left: 16px; right: 72px; max-width: none; font-size: 15px; min-height: 60px; }
+  .intro-toggle { top: 76px; }
+  .hero-title { bottom: 92px; right: 16px; background: linear-gradient(transparent, var(--paper) 22%); padding-top: 24px; }
+  .hero-actions { left: 16px; right: 16px; flex-direction: row; align-items: stretch; }
+  .pill { flex: 1; text-align: center; }
+}
+
+/* ---------- People who ask for less motion get none ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; }
+}

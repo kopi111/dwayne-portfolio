@@ -1,0 +1,13 @@
+Redesign 2026-11-04: kopi said the first version was ugly.
+Now rebuilt from the actual reel frames (not guessed from the caption).
+
+[x] Back up old design to .previous-design/
+[x] Replace silhouette hero with real work (phone + browser windows); photo/clip drop-in stays
+[x] Type pairing: Inter Tight + Instrument Serif italic, like the reel
+[x] Floating pill nav with sliding active marker
+[x] ID card with lanyard, barcode, facts column
+[x] Periodic table with family filters and detail panel
+[x] Stacked project tabs in full colour
+[x] Certificates, giant sticky timeline year, sideways moments, big closing line
+[x] Rewrite tools/check_page.js for the new page
+[ ] kopi: supply photo or clip, and answer JCF / JMMB / email / resume questions

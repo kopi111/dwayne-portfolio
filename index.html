@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dwayne Aitken</title>
+  <meta name="description" content="Dwayne Aitken is a software engineer in Jamaica who builds websites, web apps and mobile apps.">
+  <!-- Two typefaces: a tight heavy sans for statements, a thin italic serif for the second half of each heading. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Marks the page as script-enabled straight away, so entrance animations never hide content without JavaScript. -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- Top bar: monogram and name on the left, floating section menu on the right. -->
+  <header class="top-bar">
+    <a class="brand" href="#top" aria-label="Dwayne Aitken, back to top">
+      <span class="monogram">DA</span>
+      <span class="brand-name">Dwayne Aitken</span>
+    </a>
+    <nav id="section-menu" class="section-menu" aria-label="Page sections">
+      <span id="menu-marker" class="menu-marker" aria-hidden="true"></span>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#moments">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO: ghost surname behind the real work. A photo or clip replaces the work automatically (see main.js). -->
+    <section id="hero" class="hero" aria-label="Introduction">
+      <div class="ghost-name" aria-hidden="true"><span>A</span><span>I</span><span>T</span><span>K</span><span>E</span><span>N</span></div>
+
+      <div id="hero-work" class="hero-work" aria-hidden="true">
+        <div class="browser browser-left" data-depth="14">
+          <span class="browser-address">kopi111.github.io/jelly-water</span>
+          <img src="assets/work/jelly-water.jpg" alt="" width="1440" height="900">
+        </div>
+        <div class="browser browser-right" data-depth="22">
+          <span class="browser-address">kopi111.github.io/summer-splash</span>
+          <img src="assets/work/summer-splash.jpg" alt="" width="1440" height="900">
+        </div>
+        <div class="phone" data-depth="36">
+          <img src="assets/work/money-path.jpg" alt="" width="720" height="1600">
+        </div>
+      </div>
+
+      <!-- These stay hidden until assets/hero-photo.png or assets/hero-intro.mp4 is added to the project. -->
+      <img id="hero-photo" class="hero-person" alt="Dwayne Aitken" hidden>
+      <video id="hero-video" class="hero-person" muted loop playsinline preload="metadata" hidden></video>
+      <button id="sound-toggle" class="sound-toggle" type="button" aria-label="Turn sound on" hidden>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path id="sound-waves" class="sound-waves" d="M16 9c1.5 1.5 1.5 4.500 0 6M18.500 6.500c3 3 3 8 0 11"/></svg>
+      </button>
+
+      <div class="hero-title">
+        <p class="hero-name">Dwayne Aitken</p>
+        <h1>Software<br><em>Engineer.</em></h1>
+        <p class="hero-summary">Websites, web apps and mobile apps, built in Jamaica.</p>
+      </div>
+
+      <div class="hero-actions">
+        <a class="pill pill-solid" href="#work">Explore work</a>
+        <a class="pill" href="#contact">Let's talk</a>
+      </div>
+    </section>
+
+    <!-- ABOUT: introduction, hanging ID card, and quick facts. -->
+    <section id="about" class="about">
+      <div class="about-intro">
+        <p class="section-label"><b>01</b><i></i>About</p>
+        <h2 class="rising">Hi, I'm <em>Dwayne.</em></h2>
+        <p class="about-copy">I'm a software engineer from Greater Portmore, Jamaica. I work across the whole product: the database, the API, the web front end and the Android app.</p>
+        <p class="about-copy about-copy-quiet">Through my company, Aitken Technology, I make websites, web apps and mobile apps for businesses.</p>
+        <div class="about-links">
+          <a class="pill pill-solid" href="#work">See my work</a>
+          <a class="pill" href="https://github.com/kopi111" target="_blank" rel="noopener">GitHub</a>
+          <a class="pill" href="https://www.tiktok.com/@aitkentechnology" target="_blank" rel="noopener">TikTok</a>
+        </div>
+      </div>
+
+      <div id="card-stage" class="card-stage">
+        <span class="lanyard" aria-hidden="true"></span>
+        <span class="lanyard-clip" aria-hidden="true"></span>
+        <button id="id-card" class="id-card" type="button" aria-pressed="false" aria-label="Flip ID card">
+          <span class="id-card-turner">
+            <span class="id-face id-front">
+              <span class="id-band"><span>Developer ID</span><span>Jamaica</span></span>
+              <span class="id-photo"><span id="id-monogram">DA</span><img id="id-photo-image" alt="" hidden></span>
+              <span class="id-name">Dwayne Aitken</span>
+              <span class="id-role">Software Engineer</span>
+              <span class="id-meta"><span>Aitken Technology</span><span>MSc 2025</span></span>
+              <span id="id-barcode" class="id-barcode"></span>
+            </span>
+            <span class="id-face id-back">
+              <span class="id-back-title">Education</span>
+              <span class="id-line"><b>MSc Information Systems Management</b>UTech, 2025</span>
+              <span class="id-line"><b>BSc Information and Communication Technology</b>VTDI, 2022</span>
+              <span class="id-line"><b>ASc Information and Communication Technology</b>VTDI, 2020</span>
+              <span class="id-back-title id-back-title-second">Also certified in</span>
+              <span class="id-line">CCNAv7 SRWE and ENSA, CCNA Security, Fundamentals of CCTV</span>
+            </span>
+          </span>
+        </button>
+        <p class="card-hint">Click the card to flip it</p>
+      </div>
+
+      <div class="about-facts">
+        <dl>
+          <div><dt>Based in</dt><dd>Greater Portmore, Jamaica</dd></div>
+          <div><dt>Company</dt><dd>Aitken Technology</dd></div>
+          <div><dt>Studied</dt><dd>MSc, UTech, 2025</dd></div>
+          <div><dt>Builds</dt><dd>Web, mobile, APIs</dd></div>
+          <div><dt>Main tools</dt><dd>.NET, Flutter, SQL</dd></div>
+        </dl>
+        <p class="about-quote">From the database to the screen in your hand.</p>
+      </div>
+    </section>
+
+    <!-- SKILLS: periodic table. main.js draws the tiles from the SKILLS list. -->
+    <section id="skills" class="skills">
+      <p class="section-label"><b>02</b><i></i>Skills</p>
+      <h2 class="rising">The periodic table <em>of my stack.</em></h2>
+      <p class="section-note">30 elements in five families. Point at a tile to see where I used it, or pick a family to light it up.</p>
+      <div id="family-filters" class="family-filters" role="group" aria-label="Highlight a skill family"></div>
+      <div class="table-layout">
+        <div id="periodic-table" class="periodic-table"></div>
+        <aside id="element-panel" class="element-panel" aria-live="polite">
+          <div id="panel-idle" class="panel-idle">
+            <svg class="spinning-star" viewBox="0 0 100 100" aria-hidden="true"><g id="star-spokes"></g></svg>
+            <p>Pick an element</p>
+          </div>
+          <div id="panel-detail" class="panel-detail" hidden>
+            <span id="panel-symbol" class="panel-symbol"></span>
+            <h3 id="panel-name"></h3>
+            <p id="panel-family" class="panel-family"></p>
+            <p id="panel-use"></p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- WORK: stacked tabs. One project opens at a time, in full colour. -->
+    <section id="work" class="work">
+      <p class="section-label"><b>03</b><i></i>Work</p>
+      <h2 class="rising">Things I've <em>built.</em></h2>
+      <div id="project-stack" class="project-stack">
+
+        <article class="project is-open">
+          <button class="project-tab" type="button" aria-expanded="true"><b>01</b><span>Summer Splash</span></button>
+          <div class="project-body">
+            <div class="project-text">
+              <p class="project-kind">Business website</p>
+              <h3>Summer Splash</h3>
+              <p>Website for a pool services company, with service pages, customer reviews and a free-quote request form.</p>
+              <a class="pill pill-solid" href="https://kopi111.github.io/summer-splash/" target="_blank" rel="noopener">Visit the site</a>
+            </div>
+            <a class="project-shot" href="https://kopi111.github.io/summer-splash/" target="_blank" rel="noopener" tabindex="-1">
+              <img src="assets/work/summer-splash.jpg" alt="Summer Splash website home page" width="1440" height="900" loading="lazy">
+            </a>
+          </div>
+        </article>
+
+        <article class="project">
+          <button class="project-tab" type="button" aria-expanded="false"><b>02</b><span>Money Path</span></button>
+          <div class="project-body">
+            <div class="project-text">
+              <p class="project-kind">Android app</p>
+              <h3>Money Path</h3>
+              <p>My own budgeting app. Savings goals, monthly limits, PIN lock and an encrypted database. Nothing leaves the phone.</p>
+            </div>
+            <div class="project-shot project-shot-phone">
+              <img src="assets/work/money-path.jpg" alt="Money Path app showing the money left for the month" width="720" height="1600" loading="lazy">
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <button class="project-tab" type="button" aria-expanded="false"><b>03</b><span>Jelly Water</span></button>
+          <div class="project-body">
+            <div class="project-text">
+              <p class="project-kind">Label and 3D website</p>
+              <h3>Jelly Water</h3>
+              <p>Coconut water label and 3D ordering site, made for a school assignment.</p>
+              <a class="pill pill-solid" href="https://kopi111.github.io/jelly-water/" target="_blank" rel="noopener">Visit the site</a>
+            </div>
+            <a class="project-shot" href="https://kopi111.github.io/jelly-water/" target="_blank" rel="noopener" tabindex="-1">
+              <img src="assets/work/jelly-water.jpg" alt="Jelly Water 3D ordering website" width="1440" height="900" loading="lazy">
+            </a>
+          </div>
+        </article>
+
+        <article class="project">
+          <button class="project-tab" type="button" aria-expanded="false"><b>04</b><span>Aitken Shipping</span></button>
+          <div class="project-body">
+            <div class="project-text">
+              <p class="project-kind">Demo web app</p>
+              <h3>Aitken Shipping</h3>
+              <p>Demo courier site in ASP.NET Core with instant quotes, parcel tracking and shipment booking.</p>
+            </div>
+            <div class="project-shot">
+              <img src="assets/work/aitken-shipping.jpg" alt="Aitken Shipping website home page" width="1440" height="900" loading="lazy">
+            </div>
+          </div>
+        </article>
+
+        <article class="project">
+          <button class="project-tab" type="button" aria-expanded="false"><b>05</b><span>Strategy Desk</span></button>
+          <div class="project-body">
+            <div class="project-text">
+              <p class="project-kind">Dashboard</p>
+              <h3>Strategy Desk</h3>
+              <p>Price-action dashboard with chart markup, alerts and a trades page, written in plain JavaScript.</p>
+              <a class="pill pill-solid" href="https://kopi111.github.io/strategy-desk/" target="_blank" rel="noopener">Visit the site</a>
+            </div>
+            <a class="project-shot" href="https://kopi111.github.io/strategy-desk/" target="_blank" rel="noopener" tabindex="-1">
+              <img src="assets/work/strategy-desk.jpg" alt="Strategy Desk price-action dashboard" width="1440" height="900" loading="lazy">
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CERTIFICATES: a plain list that turns black under the pointer. -->
+    <section id="learning" class="learning">
+      <div class="learning-heading">
+        <p class="section-label"><b>04</b><i></i>Certificates</p>
+        <h2 class="rising">Always <em>learning.</em></h2>
+      </div>
+      <ul class="certificate-list">
+        <li><span>CCNAv7 SRWE</span><span>Cisco</span></li>
+        <li><span>CCNAv7 ENSA</span><span>Cisco</span></li>
+        <li><span>CCNA Security</span><span>Cisco</span></li>
+        <li><span>Fundamentals of CCTV</span><span>Certificate</span></li>
+        <li><span>Web design</span><span>Vector Technology Institute</span></li>
+      </ul>
+    </section>
+
+    <!-- EXPERIENCE: one giant year stays pinned while the entries scroll past it. -->
+    <section id="experience" class="experience">
+      <p class="section-label"><b>05</b><i></i>Experience</p>
+      <h2 class="rising">Education &amp; <em>experience.</em></h2>
+      <div class="timeline-layout">
+        <div class="year-column" aria-hidden="true"><span id="big-year" class="big-year">Now</span></div>
+        <ol id="timeline" class="timeline">
+          <li data-year="Now"><span class="when">Now</span><h3>Aitken Technology</h3><p>My company. Websites, web apps and mobile apps.</p></li>
+          <li data-year="2025"><span class="when">2025</span><h3>MSc Information Systems Management</h3><p>University of Technology, Jamaica</p></li>
+          <li data-year="2022"><span class="when">2022 to present</span><h3>Software Engineer, JMMB</h3><p>Customer onboarding and self-service systems</p></li>
+          <li data-year="2020"><span class="when">2020 to 2022</span><h3>BSc Information and Communication Technology</h3><p>VTDI</p></li>
+          <li data-year="2018"><span class="when">2018 to 2020</span><h3>ASc Information and Communication Technology</h3><p>VTDI, with an award for outstanding academic performance</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- MOMENTS: scrolling down the page moves this strip sideways (see main.js). -->
+    <section id="moments" class="moments">
+      <div class="moments-stage">
+        <div class="moments-heading">
+          <p class="section-label"><b>06</b><i></i>Achievements</p>
+          <h2 class="rising">Proud <em>moments.</em></h2>
+        </div>
+        <ul id="moments-track" class="moments-track">
+          <li class="moment moment-black"><strong>106</strong><span>projects kept on GitHub</span></li>
+          <li class="moment moment-sites">
+            <strong>3</strong><span>public websites you can open right now</span>
+            <div class="moment-thumbs" aria-hidden="true">
+              <img src="assets/work/summer-splash.jpg" alt="" loading="lazy">
+              <img src="assets/work/jelly-water.jpg" alt="" loading="lazy">
+              <img src="assets/work/strategy-desk.jpg" alt="" loading="lazy">
+            </div>
+          </li>
+          <li class="moment moment-pale moment-low"><strong>MSc</strong><span>Information Systems Management, completed 2025</span></li>
+          <li class="moment moment-black moment-high"><strong>5</strong><span>networking, CCTV and web design certificates</span></li>
+          <li class="moment moment-pale"><strong><em>Award</em></strong><span>Outstanding academic performance, VTDI, 2018 to 2020</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT: the closing line and one obvious way to reach me. -->
+    <section id="contact" class="contact">
+      <p class="section-label"><b>07</b><i></i>Contact</p>
+      <h2 class="contact-line rising">Let's build <span>something together.</span></h2>
+      <div class="contact-row">
+        <a class="contact-email" href="mailto:dwayneaitken111@gmail.com">dwayneaitken111@gmail.com</a>
+        <p class="contact-links">
+          <a class="pill" href="https://github.com/kopi111" target="_blank" rel="noopener">GitHub</a>
+          <a class="pill" href="https://www.tiktok.com/@aitkentechnology" target="_blank" rel="noopener">TikTok</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>&copy; 2026 Dwayne Aitken</span><span>Built in Jamaica</span></footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
